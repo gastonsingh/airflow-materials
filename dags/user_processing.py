@@ -14,10 +14,10 @@ def _process_user(ti):
     processed_user = json_normalize({
         'firstname': user['name']['first'],
         'lastname': user['name']['last'],
-        'country': user['name']['country'],
-        'username': user['name']['username'],
-        'password': user['name']['password'],
-        'firstname': user['email']})
+        'country': user['location']['country'],
+        'username': user['login']['username'],
+        'password': user['login']['password'],
+        'email': user['email']})
     processed_user.to_csv('/tmp/processed_user.csv', index=None, header=False)
 
 with DAG('user_processing', start_date=datetime(2022, 1, 1),
