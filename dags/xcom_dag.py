@@ -42,7 +42,8 @@ with DAG("xcom_dag", start_date=datetime(2022, 1, 1),
 
     t4 = BashOperator(
         task_id='t4',
-        bash_command="echo ''"
+        bash_command="echo ''",
+        trigger_rule='all_success'
     )
 
     t1 >> branch >> [t2, t3] >> t4
